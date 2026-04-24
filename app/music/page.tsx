@@ -54,18 +54,29 @@ export default function MusicPage() {
           </div>
         </div>
 
-        <div className="relative min-h-[60vh] overflow-hidden bg-ink-2" aria-label="SAHXL portrait placeholder">
-          <div
+        <div className="relative min-h-[60vh] overflow-hidden bg-ink-2" aria-label="SAHXL · 2026">
+          {/*
+            Same hero image as the homepage — save to public/images/sahxl-hero.jpg.
+            Scaled slightly to crop any black letterboxing; object-center keeps
+            the subject anchored in the frame on tall aspect ratios.
+          */}
+          <img
+            src="/images/sahxl-hero.jpg"
+            alt=""
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-br from-ink-0 via-ink-1 to-ink-2"
+            className="absolute inset-0 h-full w-full scale-[1.04] object-cover object-center"
           />
           <div
             aria-hidden
-            className="ambient-drift-b absolute inset-[-20%] opacity-30"
-            style={{ background: "radial-gradient(circle, rgba(255,77,46,0.25) 0%, transparent 55%)" }}
+            className="absolute inset-0 bg-gradient-to-t from-ink-0/70 via-ink-0/10 to-transparent"
           />
-          <div className="absolute bottom-8 left-8 font-mono text-caption uppercase tracking-[0.28em] text-bone-300">
-            Portrait · Los Angeles · 2026
+          <div
+            aria-hidden
+            className="ambient-drift-b absolute inset-[-20%] opacity-25 mix-blend-screen"
+            style={{ background: "radial-gradient(circle, rgba(255,77,46,0.3) 0%, transparent 55%)" }}
+          />
+          <div className="absolute bottom-8 left-8 font-mono text-caption uppercase tracking-[0.28em] text-bone-100">
+            Portrait · 2026
           </div>
         </div>
       </section>

@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Cloudflare Pages.
+  // Static export for Cloudflare Pages (production builds only — dev server
+  // can't serve static chunks when output: "export" is set).
   // When Shopify / server actions come online, switch to `@cloudflare/next-on-pages`
   // (or move to Vercel) — static export has no server runtime.
-  output: "export",
+  ...(process.env.NODE_ENV === "production" ? { output: "export" } : {}),
   reactStrictMode: true,
   images: {
     // Static export cannot run Next's image optimizer — all <Image> sources

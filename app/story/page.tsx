@@ -16,7 +16,7 @@ export default function StoryPage() {
           <p className="font-mono text-caption uppercase tracking-[0.36em] text-bone-300">The story</p>
           <h1 className="poster-in mt-5 font-heading text-display-xl leading-[0.88]">NO LIMIT</h1>
           <p className="mt-6 max-w-prose506 font-mono text-caption uppercase tracking-[0.28em] text-ember">
-            SAHXL · 506 Global · Los Angeles
+            SAHXL · 506 Global
           </p>
         </div>
 
@@ -32,14 +32,14 @@ export default function StoryPage() {
               style={{ background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 55%)" }}
             />
             <div className="absolute bottom-6 left-6 font-mono text-[10px] uppercase tracking-[0.28em] text-bone-300">
-              Portrait · Los Angeles
+              Portrait
             </div>
           </div>
 
           <div className="max-w-prose506 space-y-8 text-body-lg text-bone-200">
             <p>
               SAHXL came up between cities — a voice shaped by late drives, louder rooms, and the kind of nights
-              that don't end clean. Born from 506 Global. Based in Los Angeles.
+              that don't end clean. Born from 506 Global.
             </p>
             <p>
               The sound is heavy but honest. Rap records that breathe like ballads. R&amp;B cuts with teeth.

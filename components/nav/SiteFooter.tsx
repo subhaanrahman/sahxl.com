@@ -14,7 +14,7 @@ export function SiteFooter() {
           <div className="font-heading text-heading-lg uppercase tracking-[0.18em] text-bone-100">SAHXL</div>
           <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.34em] text-ember">No Limit</p>
           <p className="mt-6 max-w-xs text-body-sm text-bone-300">
-            506 Global. Los Angeles. Music, merch, and every piece of the world being built in the dark.
+            506 Global. Music, merch, and every piece of the world being built in the dark.
           </p>
 
           <form className="mt-10 max-w-sm" aria-label="Newsletter">

@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "next-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "cwd": ".",
+      "name": "sahxl",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/subhaan/Documents/Claude/Projects/Sahxl/sahxl.com/node_modules/next/dist/bin/next", "dev"],
+      "cwd": "/Users/subhaan/Documents/Claude/Projects/Sahxl/sahxl.com",
       "port": 3000,
       "autoPort": true
     }

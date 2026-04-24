@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PRIMARY_NAV, VIP_NAV_SWAP } from "@/lib/nav";
 import { cn } from "@/lib/cn";
-import { LaClock } from "./LaClock";
 
 /**
  * Site header — matches wireframes 01–06 in sahxl-website-spec/wireframes/.
@@ -33,29 +32,15 @@ export function SiteHeader() {
       >
         {/* Wordmark */}
         <Link href="/" className="group flex flex-col">
-          {isShop ? (
-            <span className="font-serif506 italic text-[26px] font-semibold leading-none tracking-tight text-gold transition-colors duration-280 ease-sahxl-out group-hover:text-gold-soft">
-              506 Global
-            </span>
-          ) : (
-            <>
-              <span className="font-heading text-[22px] leading-none tracking-[0.18em] text-bone-100">
-                SAHXL
-              </span>
-              <span className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.34em] text-ember">
-                No Limit
-              </span>
-            </>
-          )}
+          <span className="font-heading text-[22px] leading-none tracking-[0.18em] text-bone-100">
+            SAHXL
+          </span>
+          <span className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.34em] text-ember">
+            No Limit
+          </span>
         </Link>
 
-        {/* LA + live clock */}
-        <div className="hidden flex-col leading-tight md:flex">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-100">Los Angeles</span>
-          <LaClock className="font-mono text-[10px] tracking-[0.1em] text-bone-400" />
-        </div>
-
-        {/* Primary nav */}
+{/* Primary nav */}
         <ul className="ml-6 hidden gap-7 md:flex" role="list">
           {nav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -72,11 +57,6 @@ export function SiteHeader() {
                   aria-current={active ? "page" : undefined}
                 >
                   {item.label}
-                  {item.count != null && (
-                    <span className="ml-1.5 font-mono text-[10px] text-bone-400">
-                      {item.count}
-                    </span>
-                  )}
                 </Link>
               </li>
             );
@@ -109,8 +89,6 @@ function BagButton() {
       aria-label={`Open bag, ${count} items, subtotal ${subtotal}`}
     >
       <span>Bag</span>
-      <span aria-hidden className="text-bone-400">·</span>
-      <span className="nums-tabular">{subtotal}</span>
     </Link>
   );
 }

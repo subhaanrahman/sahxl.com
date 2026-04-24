@@ -21,28 +21,50 @@ function HeroStub() {
   return (
     <section
       aria-label="Hero"
-      className="relative flex min-h-[90vh] items-end overflow-hidden bg-ink-0"
+      className="relative flex min-h-[68vh] items-end overflow-hidden bg-ink-0"
     >
-      <div
+      {/*
+        Hero image — save the SAHXL / louvers portrait to
+        public/images/sahxl-hero.jpg. We use object-cover + a slight scale to
+        crop any black letterboxing on the edges, and a bottom-weighted
+        gradient to guarantee legibility for the NO LIMIT lockup overlay.
+      */}
+      <img
+        src="/images/sahxl-hero.jpg"
+        alt=""
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-ink-0 via-ink-1 to-ink-0"
+        className="absolute inset-0 h-full w-full scale-110 object-cover object-center blur-2xl"
+      />
+      <img
+        src="/images/sahxl-hero.jpg"
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full scale-[1.2] object-contain object-right origin-right"
       />
       <div
         aria-hidden
-        className="ambient-drift-a pointer-events-none absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full blur-3xl opacity-40"
-        style={{ background: "radial-gradient(circle, rgba(255,77,46,0.22) 0%, transparent 60%)" }}
+        className="absolute inset-0 bg-gradient-to-b from-ink-0/60 via-ink-0/60 to-ink-0/95"
       />
       <div
         aria-hidden
-        className="ambient-drift-b pointer-events-none absolute -right-1/4 top-0 h-[50vmax] w-[50vmax] rounded-full blur-3xl opacity-25"
-        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)" }}
+        className="absolute inset-0 bg-gradient-to-tr from-ink-0/90 via-ink-0/50 to-transparent"
       />
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 pb-20 md:px-10 md:pb-24 rise-child">
+      <div
+        aria-hidden
+        className="ambient-drift-a pointer-events-none absolute -left-1/4 top-1/4 h-[60vmax] w-[60vmax] rounded-full blur-3xl opacity-25 mix-blend-screen"
+        style={{ background: "radial-gradient(circle, rgba(255,77,46,0.35) 0%, transparent 60%)" }}
+      />
+      <div
+        aria-hidden
+        className="ambient-drift-b pointer-events-none absolute -right-1/4 top-0 h-[50vmax] w-[50vmax] rounded-full blur-3xl opacity-20 mix-blend-screen"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 60%)" }}
+      />
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 pb-14 md:px-10 md:pb-16 rise-child">
         <p className="font-mono text-caption uppercase tracking-[0.32em] text-bone-300">
-          SAHXL · Los Angeles
+          NO LIMIT
         </p>
         <h1 className="poster-in mt-6 font-heading text-display-xl leading-none">
-          NO LIMIT
+          SAHXL
         </h1>
         <p className="mt-6 max-w-prose506 text-body-lg text-bone-200">
           New chapter. No ceiling. Drops every week.

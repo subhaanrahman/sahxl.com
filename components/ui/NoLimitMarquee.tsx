@@ -9,7 +9,7 @@ import { useState } from "react";
  * Used as a cinematic band between hero and featured drop on /.
  */
 export function NoLimitMarquee({
-  words = ["NO LIMIT", "506 GLOBAL", "LOS ANGELES", "SAHXL"],
+  words = ["NO LIMIT", "506 GLOBAL", "SAHXL"],
   accent = "ember",
   speed = 40
 }: {
