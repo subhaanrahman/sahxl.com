@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   SAHXL × 506 Global — Editorial Cinema / Poster Noir
+   Source of truth: sahxl-website-spec/brand-tokens.md
+   Tagline: "No Limit"
+   Two surface modes:
+     :root                    → SAHXL dark (default, music/tour/VIP/story)
+     [data-surface="shop"]    → 506 Global (gold accents + Georgia italic wordmark)
+   ========================================================================== */
+
+:root {
+  /* Ink (darks) — OLED-safe, no pure #000000 */
+  --ink-0: #050507;
+  --ink-1: #0A0A0B;
+  --ink-2: #141417;
+  --ink-3: #1F1F24;
+  --ink-4: #2A2A30;
+
+  /* Bone (lights) */
+  --bone-100: #FFFFFF;
+  --bone-200: #EDEDED;
+  --bone-300: #A8A8AE;
+  --bone-400: #6E6E76;
+
+  /* Paper — warm off-white for the /music archive panel */
+  --paper: #F2EFE7;
+  --paper-ink: #121014;
+
+  /* Hairlines — rgba on dark surfaces */
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.16);
+
+  /* Accents — restrained to ember (primary) + gold (VIP/506) */
+  --ember: #FF4D2E;
+  --ember-soft: #FF7352;
+  --gold: #D4AF37;
+  --gold-soft: #E8C967;
+
+  /* Legacy — used only for selection highlight */
+  --violet: #7C3AED;
+  --ice: #7FB8FF;
+
+  /* Semantic */
+  --success: #22C55E;
+  --danger:  #EF4444;
+  --warning: #F59E0B;
+
+  /* Font family vars — populated by next/font in app/layout.tsx */
+  --font-display: "Cinzel", serif;
+  --font-heading: "Anton", "Bebas Neue", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Motion — unified rhythm across the site */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* Expo.out — cinema curve */
+  --ease-in:  cubic-bezier(0.4, 0, 1, 1);       /* tight exit */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 280ms;
+  --dur-slow: 480ms;
+  --dur-reveal: 800ms;
+
+  /* Glows */
+  --glow-ember: 0 0 32px rgba(255, 77, 46, 0.35);
+  --glow-gold:  0 0 32px rgba(212, 175, 55, 0.28);
+}
+
+html, body {
+  background: var(--ink-1);
+  color: var(--bone-100);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect user motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus ring — always visible for keyboard users. WCAG 2.1 AA. */
+*:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+/* Hide native scrollbars on horizontal rails but keep wheel-scroll working */
+.scroll-rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll-rail::-webkit-scrollbar { display: none; }
+
+/* Text selection color */
+::selection {
+  background: var(--ember);
+  color: var(--ink-0);
+}
+
+/* Tabular numerals for prices, counters, timers */
+.nums-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Signature ambient-drift gradient behind hero moments */
+@keyframes driftA {
+  0%, 100% { transform: translate3d(-8%, -4%, 0) scale(1); }
+  50%      { transform: translate3d(6%, 3%, 0) scale(1.1); }
+}
+@keyframes driftB {
+  0%, 100% { transform: translate3d(5%, 8%, 0) scale(1.08); }
+  50%      { transform: translate3d(-6%, -5%, 0) scale(0.95); }
+}
+.ambient-drift-a { animation: driftA 28s var(--ease-in-out) infinite; }
+.ambient-drift-b { animation: driftB 36s var(--ease-in-out) infinite; }
+
+/* Poster entrance — used on hero headlines */
+@keyframes posterIn {
+  0%   { opacity: 0; transform: translate3d(0, 28px, 0); letter-spacing: 0.08em; }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); letter-spacing: normal; }
+}
+.poster-in { animation: posterIn var(--dur-reveal) var(--ease-out) both; }
+
+/* Staggered children reveal */
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.rise-child > * {
+  animation: rise var(--dur-slow) var(--ease-out) both;
+}
+.rise-child > *:nth-child(1) { animation-delay: 40ms; }
+.rise-child > *:nth-child(2) { animation-delay: 100ms; }
+.rise-child > *:nth-child(3) { animation-delay: 160ms; }
+.rise-child > *:nth-child(4) { animation-delay: 220ms; }
+.rise-child > *:nth-child(5) { animation-delay: 280ms; }
+
+/* Underline-CTA pattern (poster noir) */
+.underline-cta {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+  transition: letter-spacing var(--dur-base) var(--ease-out);
+}
+.underline-cta::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform-origin: left center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.underline-cta:hover { letter-spacing: 0.05em; }
+.underline-cta:hover::after { transform: scaleX(1.05); }
+
+/* Press-scale — applied to tappable cards / buttons */
+.press-scale {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* Film-grain overlay — used on locked / cinematic surfaces */
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 1px;
+  mix-blend-mode: overlay;
+}
+
+/* 506 Global surface: shop routes wrap in <div data-surface="shop"> */
+[data-surface="shop"] {
+  --accent: var(--gold);
+}
+[data-surface="shop"] ::selection {
+  background: var(--gold);
+  color: var(--ink-0);
+}

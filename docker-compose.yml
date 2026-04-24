@@ -1,0 +1,27 @@
+# For Synology Container Manager → Project → Create → "Upload" or "Set path"
+# Pick this compose file; Container Manager will build from Dockerfile and run.
+#
+# After it starts, visit http://<nas-lan-ip>:3000 to confirm.
+# Then add a Reverse Proxy entry in DSM so sahxl.com (443) -> this container (3000).
+
+services:
+  web:
+    container_name: sahxl-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      # Add real env vars once Shopify / Klaviyo are wired up:
+      # SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${SHOPIFY_STOREFRONT_ACCESS_TOKEN}
+      # KLAVIYO_API_KEY: ${KLAVIYO_API_KEY}
+      # VIP_SESSION_SECRET: ${VIP_SESSION_SECRET}
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--spider", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
