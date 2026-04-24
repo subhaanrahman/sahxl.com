@@ -3,6 +3,12 @@
 
 import { notFound } from "next/navigation";
 
+// Required for `output: "export"` — pre-renders each product handle at build time.
+// When MOCK_PRODUCTS is replaced with Shopify, this should fetch real handles.
+export function generateStaticParams() {
+  return Object.keys(MOCK_PRODUCTS).map((handle) => ({ handle }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   return { title: handle.replace(/-/g, " ") };
