@@ -39,7 +39,7 @@ export function SiteHeader() {
             </span>
           ) : (
             <>
-              <span className="font-heading text-[22px] font-bold leading-none tracking-[0.18em] text-bone-100">
+              <span className="font-heading text-[22px] leading-none tracking-[0.18em] text-bone-100">
                 SAHXL
               </span>
               <span className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.34em] text-ember">

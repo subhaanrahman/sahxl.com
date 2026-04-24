@@ -58,9 +58,14 @@ const config: Config = {
         serif506: ["Georgia", "serif"]
       },
       fontSize: {
-        "display-xl": ["clamp(72px, 14vw, 168px)", { lineHeight: "0.88", letterSpacing: "-0.02em", fontWeight: "900" }],
-        "display-lg": ["clamp(56px, 10vw, 120px)", { lineHeight: "0.9", letterSpacing: "-0.015em", fontWeight: "900" }],
-        "display-md": ["clamp(40px, 6.5vw, 72px)", { lineHeight: "0.96", letterSpacing: "-0.005em", fontWeight: "800" }],
+        // Anton (our display face) ships only in 400. Asking the browser for 800/900
+        // forces *synthetic* bolding — thickened strokes, no real weight variant —
+        // and the negative tracking squeezes the already-condensed letterforms into
+        // each other. Use Anton's native weight and give it positive micro-tracking
+        // so the poster type breathes.
+        "display-xl": ["clamp(72px, 14vw, 168px)", { lineHeight: "0.9",  letterSpacing: "0.01em",  fontWeight: "400" }],
+        "display-lg": ["clamp(56px, 10vw, 120px)", { lineHeight: "0.92", letterSpacing: "0.015em", fontWeight: "400" }],
+        "display-md": ["clamp(40px, 6.5vw, 72px)", { lineHeight: "0.98", letterSpacing: "0.02em",  fontWeight: "400" }],
         "heading-lg": ["36px", { lineHeight: "1.1", letterSpacing: "0.01em", fontWeight: "700" }],
         "heading-md": ["24px", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "700" }],
         "heading-sm": ["18px", { lineHeight: "1.3", letterSpacing: "0.02em", fontWeight: "600" }],

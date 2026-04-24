@@ -122,7 +122,7 @@ function MusicTeaserStub() {
     >
       <div>
         <p className="font-mono text-caption uppercase tracking-[0.28em] text-ember">New single</p>
-        <h2 className="mt-4 font-heading text-display-lg leading-none tracking-tight">worst</h2>
+        <h2 className="mt-4 font-heading text-display-lg leading-none">worst</h2>
         <p className="mt-6 max-w-prose506 text-body-md text-bone-300">
           Out now. Loud or skip — your vote shapes what comes next.
         </p>
